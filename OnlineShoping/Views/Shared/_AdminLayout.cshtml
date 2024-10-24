@@ -1,0 +1,852 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-footer="true" data-placement="horizontal" data-behaviour="pinned" data-layout="fluid" data-radius="rounded" data-color="light-blue" data-navcolor="default" data-show="true" data-dimension="desktop">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>Admin Template | Default Dashboard</title>
+    <meta name="description" content="Home screen that contains stats, charts, call to action buttons and various listing elements.">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/Assets/img/favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Assets/img/favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Assets/img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/Assets/img/favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/Assets/img/favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/Assets/img/favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/Assets/img/favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/Assets/img/favicon/apple-touch-icon-152x152.png">
+    
+
+    <link rel="icon" type="image/png" href="/Assets/img/favicon/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="/Assets/img/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/Assets/img/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/Assets/img/favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/Assets/img/favicon/favicon-128.png" sizes="128x128">
+    <meta name="application-name" content="&nbsp;">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/Assets/img/favicon/mstile-144x144.png">
+    <meta name="msapplication-square70x70logo" content="/Assets/img/favicon/mstile-70x70.png">
+    <meta name="msapplication-square150x150logo" content="/Assets/img/favicon/mstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="/Assets/img/favicon/mstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="/Assets/img/favicon/mstile-310x310.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Assets/font/CS-Interface/style.css">
+    <link rel="stylesheet" href="/Assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/css/vendor/OverlayScrollbars.min.css">
+
+    <link rel="stylesheet" href="/Assets/css/vendor/glide.core.min.css">
+    <link rel="stylesheet" href="/Assets/css/vendor/introjs.min.css">
+    <link rel="stylesheet" href="/Assets/css/vendor/select2.min.css">
+    <link rel="stylesheet" href="/Assets/css/vendor/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="/Assets/css/vendor/plyr.css">
+    <link rel="stylesheet" href="/Assets/css/styles.css">
+    <link rel="stylesheet" href="/Assets/css/main.css">
+    <link href="~/content/toastr.min.css" rel="stylesheet" />
+    <script src="/Assets/js/base/loader.js"></script>
+    <style type="text/css">
+        /* Chart.js */
+       /* keyframes chartjs-render-animation {
+            from*/
+/*
+        {
+            opacity: .99
+        }
+
+        to {
+            opacity: 1
+        }*/
+
+      /*  }*/
+
+        .chartjs-render-monitor {
+            animation: chartjs-render-animation 1ms
+        }
+
+        .chartjs-size-monitor, .chartjs-size-monitor-expand, .chartjs-size-monitor-shrink {
+            position: absolute;
+            direction: ltr;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            visibility: hidden;
+            z-index: -1
+        }
+
+            .chartjs-size-monitor-expand > div {
+                position: absolute;
+                width: 1000000px;
+                height: 1000000px;
+                left: 0;
+                top: 0
+            }
+
+            .chartjs-size-monitor-shrink > div {
+                position: absolute;
+                width: 200%;
+                height: 200%;
+                left: 0;
+                top: 0
+            }
+    </style>
+</head>
+<body class="" data-bs-padding="17px" style="">
+    <script src="/Assets/js/vendor/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+
+    <div hidden="" id="sprite-plyr"><!--?xml version="1.0" encoding="UTF-8"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="plyr-airplay" viewBox="0 0 18 18"><path d="M16 1H2a1 1 0 00-1 1v10a1 1 0 001 1h3v-2H3V3h12v8h-2v2h3a1 1 0 001-1V2a1 1 0 00-1-1z"></path><path d="M4 17h10l-5-6z"></path></symbol><symbol id="plyr-captions-off" viewBox="0 0 18 18"><path d="M1 1c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h4.6l2.7 2.7c.2.2.4.3.7.3.3 0 .5-.1.7-.3l2.7-2.7H17c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1H1zm4.52 10.15c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41C8.47 4.96 7.46 3.76 5.5 3.76c-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69zm7.57 0c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41c-.28-1.15-1.29-2.35-3.25-2.35-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69z" fill-rule="evenodd" fill-opacity=".5"></path></symbol><symbol id="plyr-captions-on" viewBox="0 0 18 18"><path d="M1 1c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h4.6l2.7 2.7c.2.2.4.3.7.3.3 0 .5-.1.7-.3l2.7-2.7H17c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1H1zm4.52 10.15c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41C8.47 4.96 7.46 3.76 5.5 3.76c-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69zm7.57 0c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41c-.28-1.15-1.29-2.35-3.25-2.35-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69z" fill-rule="evenodd"></path></symbol><symbol id="plyr-download" viewBox="0 0 18 18"><path d="M9 13c.3 0 .5-.1.7-.3L15.4 7 14 5.6l-4 4V1H8v8.6l-4-4L2.6 7l5.7 5.7c.2.2.4.3.7.3zm-7 2h14v2H2z"></path></symbol><symbol id="plyr-enter-fullscreen" viewBox="0 0 18 18"><path d="M10 3h3.6l-4 4L11 8.4l4-4V8h2V1h-7zM7 9.6l-4 4V10H1v7h7v-2H4.4l4-4z"></path></symbol><symbol id="plyr-exit-fullscreen" viewBox="0 0 18 18"><path d="M1 12h3.6l-4 4L2 17.4l4-4V17h2v-7H1zM16 .6l-4 4V1h-2v7h7V6h-3.6l4-4z"></path></symbol><symbol id="plyr-fast-forward" viewBox="0 0 18 18"><path d="M7.875 7.171L0 1v16l7.875-6.171V17L18 9 7.875 1z"></path></symbol><symbol id="plyr-logo-vimeo" viewBox="0 0 18 18"><path d="M17 5.3c-.1 1.6-1.2 3.7-3.3 6.4-2.2 2.8-4 4.2-5.5 4.2-.9 0-1.7-.9-2.4-2.6C5 10.9 4.4 6 3 6c-.1 0-.5.3-1.2.8l-.8-1c.8-.7 3.5-3.4 4.7-3.5 1.2-.1 2 .7 2.3 2.5.3 2 .8 6.1 1.8 6.1.9 0 2.5-3.4 2.6-4 .1-.9-.3-1.9-2.3-1.1.8-2.6 2.3-3.8 4.5-3.8 1.7.1 2.5 1.2 2.4 3.3z"></path></symbol><symbol id="plyr-logo-youtube" viewBox="0 0 18 18"><path d="M16.8 5.8c-.2-1.3-.8-2.2-2.2-2.4C12.4 3 9 3 9 3s-3.4 0-5.6.4C2 3.6 1.3 4.5 1.2 5.8 1 7.1 1 9 1 9s0 1.9.2 3.2c.2 1.3.8 2.2 2.2 2.4C5.6 15 9 15 9 15s3.4 0 5.6-.4c1.4-.3 2-1.1 2.2-2.4.2-1.3.2-3.2.2-3.2s0-1.9-.2-3.2zM7 12V6l5 3-5 3z"></path></symbol><symbol id="plyr-muted" viewBox="0 0 18 18"><path d="M12.4 12.5l2.1-2.1 2.1 2.1 1.4-1.4L15.9 9 18 6.9l-1.4-1.4-2.1 2.1-2.1-2.1L11 6.9 13.1 9 11 11.1zM3.786 6.008H.714C.286 6.008 0 6.31 0 6.76v4.512c0 .452.286.752.714.752h3.072l4.071 3.858c.5.3 1.143 0 1.143-.602V2.752c0-.601-.643-.977-1.143-.601L3.786 6.008z"></path></symbol><symbol id="plyr-pause" viewBox="0 0 18 18"><path d="M6 1H3c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zm6 0c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1h-3z"></path></symbol><symbol id="plyr-pip" viewBox="0 0 18 18"><path d="M13.293 3.293L7.022 9.564l1.414 1.414 6.271-6.271L17 7V1h-6z"></path><path d="M13 15H3V5h5V3H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1v-6h-2v5z"></path></symbol><symbol id="plyr-play" viewBox="0 0 18 18"><path d="M15.562 8.1L3.87.225c-.818-.562-1.87 0-1.87.9v15.75c0 .9 1.052 1.462 1.87.9L15.563 9.9c.584-.45.584-1.35 0-1.8z"></path></symbol><symbol id="plyr-restart" viewBox="0 0 18 18"><path d="M9.7 1.2l.7 6.4 2.1-2.1c1.9 1.9 1.9 5.1 0 7-.9 1-2.2 1.5-3.5 1.5-1.3 0-2.6-.5-3.5-1.5-1.9-1.9-1.9-5.1 0-7 .6-.6 1.4-1.1 2.3-1.3l-.6-1.9C6 2.6 4.9 3.2 4 4.1 1.3 6.8 1.3 11.2 4 14c1.3 1.3 3.1 2 4.9 2 1.9 0 3.6-.7 4.9-2 2.7-2.7 2.7-7.1 0-9.9L16 1.9l-6.3-.7z"></path></symbol><symbol id="plyr-rewind" viewBox="0 0 18 18"><path d="M10.125 1L0 9l10.125 8v-6.171L18 17V1l-7.875 6.171z"></path></symbol><symbol id="plyr-settings" viewBox="0 0 18 18"><path d="M16.135 7.784a2 2 0 01-1.23-2.969c.322-.536.225-.998-.094-1.316l-.31-.31c-.318-.318-.78-.415-1.316-.094a2 2 0 01-2.969-1.23C10.065 1.258 9.669 1 9.219 1h-.438c-.45 0-.845.258-.997.865a2 2 0 01-2.969 1.23c-.536-.322-.999-.225-1.317.093l-.31.31c-.318.318-.415.781-.093 1.317a2 2 0 01-1.23 2.969C1.26 7.935 1 8.33 1 8.781v.438c0 .45.258.845.865.997a2 2 0 011.23 2.969c-.322.536-.225.998.094 1.316l.31.31c.319.319.782.415 1.316.094a2 2 0 012.969 1.23c.151.607.547.865.997.865h.438c.45 0 .845-.258.997-.865a2 2 0 012.969-1.23c.535.321.997.225 1.316-.094l.31-.31c.318-.318.415-.781.094-1.316a2 2 0 011.23-2.969c.607-.151.865-.547.865-.997v-.438c0-.451-.26-.846-.865-.997zM9 12a3 3 0 110-6 3 3 0 010 6z"></path></symbol><symbol id="plyr-volume" viewBox="0 0 18 18"><path d="M15.6 3.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4C15.4 5.9 16 7.4 16 9c0 1.6-.6 3.1-1.8 4.3-.4.4-.4 1 0 1.4.2.2.5.3.7.3.3 0 .5-.1.7-.3C17.1 13.2 18 11.2 18 9s-.9-4.2-2.4-5.7z"></path><path d="M11.282 5.282a.909.909 0 000 1.316c.735.735.995 1.458.995 2.402 0 .936-.425 1.917-.995 2.487a.909.909 0 000 1.316c.145.145.636.262 1.018.156a.725.725 0 00.298-.156C13.773 11.733 14.13 10.16 14.13 9c0-.17-.002-.34-.011-.51-.053-.992-.319-2.005-1.522-3.208a.909.909 0 00-1.316 0zm-7.496.726H.714C.286 6.008 0 6.31 0 6.76v4.512c0 .452.286.752.714.752h3.072l4.071 3.858c.5.3 1.143 0 1.143-.602V2.752c0-.601-.643-.977-1.143-.601L3.786 6.008z"></path></symbol></svg></div><div id="paddingModal" class="modal" aria-hidden="true" style="display: none;"> <div class="modal-dialog d-none"><div class="modal-content"></div></div> </div>
+    <div id="root">
+        <div id="nav" class="nav-container d-flex">
+            <div class="nav-content d-flex">
+                <div class="logo position-relative">
+                    <a href="Dashboards.Default.html">
+                        <div class="img"></div>
+                    </a>
+                </div>
+                <div class="language-switch-container">
+                    <button class="btn btn-empty language-button dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">EN</button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">DE</a>
+                        <a href="#" class="dropdown-item active">EN</a>
+                        <a href="#" class="dropdown-item">ES</a>
+                    </div>
+                </div>
+                <div class="user-container d-flex">
+                    <a href="#" class="d-flex user position-relative" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="profile" alt="profile" src="@Session["image"]">
+                        <div class="name">@Session["name"]</div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end user-menu wide">
+                        <div class="row mb-3 ms-0 me-0">
+                            <div class="col-12 ps-1 mb-2">
+                                <div class="text-extra-small text-primary">ACCOUNT</div>
+                            </div>
+                            <div class="col-6 ps-1 pe-1">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href="/AdminHome/AdminIndexUpdate">Admin Info</a>
+                                    </li>
+                                 
+                                </ul>
+                            </div>
+                           
+                        </div>
+                      
+                        <div class="row mb-1 ms-0 me-0">
+                            <div class="col-12 p-1 mb-3 pt-3">
+                                <div class="separator-light"></div>
+                            </div>
+                            <div class="col-6 ps-1 pe-1">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-help me-2"><circle cx="10" cy="9.99997" r="3" transform="rotate(-135 10 9.99997)"></circle><path d="M3.63608 3.63602C4.41713 2.85497 5.68346 2.85497 6.46451 3.63602L7.87872 5.05023C8.65977 5.83128 8.65977 7.09761 7.87872 7.87866V7.87866C7.09767 8.6597 5.83134 8.6597 5.05029 7.87866L3.63608 6.46444C2.85503 5.68339 2.85503 4.41706 3.63608 3.63602V3.63602zM12.1214 12.1213C12.9025 11.3403 14.1688 11.3403 14.9499 12.1213L16.3641 13.5355C17.1451 14.3166 17.1451 15.5829 16.3641 16.3639V16.3639C15.583 17.145 14.3167 17.145 13.5356 16.3639L12.1214 14.9497C11.3404 14.1687 11.3404 12.9024 12.1214 12.1213V12.1213z"></path><path d="M5.93558 3.10715C9.00339 1.29528 13.021 1.70728 15.6569 4.34315C18.2927 6.97901 18.7047 10.9966 16.8929 14.0644M3.10715 5.93558C1.29528 9.00339 1.70728 13.021 4.34315 15.6569C6.97901 18.2927 10.9966 18.7047 14.0644 16.8929"></path><path d="M4.34326 15.6569L7.8788 12.1213M15.657 4.34315L12.1214 7.87869"></path></svg>
+                                            <span class="align-middle">Help</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-file-text me-2"><path d="M6.5 18H13.5C14.9045 18 15.6067 18 16.1111 17.6629C16.3295 17.517 16.517 17.3295 16.6629 17.1111C17 16.6067 17 15.9045 17 14.5V7.44975C17 6.83775 17 6.53175 16.9139 6.24786C16.8759 6.12249 16.8256 6.00117 16.7638 5.88563C16.624 5.62399 16.4076 5.40762 15.9749 4.97487L14.0251 3.02513L14.0251 3.02512C13.5924 2.59238 13.376 2.37601 13.1144 2.23616C12.9988 2.1744 12.8775 2.12415 12.7521 2.08612C12.4682 2 12.1622 2 11.5503 2H6.5C5.09554 2 4.39331 2 3.88886 2.33706C3.67048 2.48298 3.48298 2.67048 3.33706 2.88886C3 3.39331 3 4.09554 3 5.5V14.5C3 15.9045 3 16.6067 3.33706 17.1111C3.48298 17.3295 3.67048 17.517 3.88886 17.6629C4.39331 18 5.09554 18 6.5 18Z"></path><path d="M13 6 7 6M13 10 7 10M13 14 7 14"></path></svg>
+                                            <span class="align-middle">Docs</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-6 pe-1 ps-1">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-gear me-2"><path d="M8.32233 3.75427C8.52487 1.45662 11.776 1.3967 11.898 3.68836C11.9675 4.99415 13.2898 5.76859 14.4394 5.17678C16.4568 4.13815 18.0312 7.02423 16.1709 8.35098C15.111 9.10697 15.0829 10.7051 16.1171 11.4225C17.932 12.6815 16.2552 15.6275 14.273 14.6626C13.1434 14.1128 11.7931 14.9365 11.6777 16.2457C11.4751 18.5434 8.22404 18.6033 8.10202 16.3116C8.03249 15.0059 6.71017 14.2314 5.56062 14.8232C3.54318 15.8619 1.96879 12.9758 3.82906 11.649C4.88905 10.893 4.91709 9.29487 3.88295 8.57749C2.06805 7.31848 3.74476 4.37247 5.72705 5.33737C6.85656 5.88718 8.20692 5.06347 8.32233 3.75427Z"></path><path d="M10 8C11.1046 8 12 8.89543 12 10V10C12 11.1046 11.1046 12 10 12V12C8.89543 12 8 11.1046 8 10V10C8 8.89543 8.89543 8 10 8V8Z"></path></svg>
+                                            <span class="align-middle">Settings</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-logout me-2"><path d="M7 15 2.35355 10.3536C2.15829 10.1583 2.15829 9.84171 2.35355 9.64645L7 5M3 10H13M12 18 14.5 18C15.9045 18 16.6067 18 17.1111 17.6629 17.3295 17.517 17.517 17.3295 17.6629 17.1111 18 16.6067 18 15.9045 18 14.5L18 5.5C18 4.09554 18 3.39331 17.6629 2.88886 17.517 2.67048 17.3295 2.48298 17.1111 2.33706 16.6067 2 15.9045 2 14.5 2L12 2"></path></svg>
+                                            <span class="align-middle">Logout</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-unstyled list-inline text-center menu-icons">
+                    <li class="list-inline-item">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#searchPagesModal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-search undefined"><circle cx="9" cy="9" r="7"></circle><path d="M14 14L17.5 17.5"></path></svg>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" id="pinButton" class="pin-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-lock-on unpin"><path d="M5 12.6667C5 12.0467 5 11.7367 5.06815 11.4824C5.25308 10.7922 5.79218 10.2531 6.48236 10.0681C6.73669 10 7.04669 10 7.66667 10H12.3333C12.9533 10 13.2633 10 13.5176 10.0681C14.2078 10.2531 14.7469 10.7922 14.9319 11.4824C15 11.7367 15 12.0467 15 12.6667V13C15 13.9293 15 14.394 14.9231 14.7804C14.6075 16.3671 13.3671 17.6075 11.7804 17.9231C11.394 18 10.9293 18 10 18V18C9.07069 18 8.60603 18 8.21964 17.9231C6.63288 17.6075 5.39249 16.3671 5.07686 14.7804C5 14.394 5 13.9293 5 13V12.6667Z"></path><path d="M11 15H10 9M13 10V5C13 3.34315 11.6569 2 10 2V2C8.34315 2 7 3.34315 7 5V10"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-lock-off pin"><path d="M5 12.6667C5 12.0467 5 11.7367 5.06815 11.4824C5.25308 10.7922 5.79218 10.2531 6.48236 10.0681C6.73669 10 7.04669 10 7.66667 10H12.3333C12.9533 10 13.2633 10 13.5176 10.0681C14.2078 10.2531 14.7469 10.7922 14.9319 11.4824C15 11.7367 15 12.0467 15 12.6667V13C15 13.9293 15 14.394 14.9231 14.7804C14.6075 16.3671 13.3671 17.6075 11.7804 17.9231C11.394 18 10.9293 18 10 18V18C9.07069 18 8.60603 18 8.21964 17.9231C6.63288 17.6075 5.39249 16.3671 5.07686 14.7804C5 14.394 5 13.9293 5 13V12.6667Z"></path><path d="M11 15H10 9M13 6V5C13 3.34315 11.6569 2 10 2V2C8.34315 2 7 3.34315 7 5V10"></path></svg>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" id="colorButton">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-light-on light"><path d="M8 14L8.28283 16.4684C8.35276 17.0786 8.38772 17.3837 8.55097 17.6009C8.63047 17.7067 8.73017 17.7956 8.8443 17.8625C9.07862 18 9.38575 18 10 18V18C10.6143 18 10.9214 18 11.1557 17.8625C11.2698 17.7956 11.3695 17.7067 11.449 17.6009C11.6123 17.3837 11.6472 17.0786 11.7172 16.4684L12 14"></path><path d="M15 7C15 10.1518 13.5 10.5 13 11.5C12.5 12.5 12.6096 14.5 10 14.5C7.39038 14.5 7.5 12.5 7 11.5C6.5 10.5 5 10.1518 5 7C5 4.23858 7.23858 2 10 2C12.7614 2 15 4.23858 15 7Z"></path><path d="M18 7 17.5 7M16.9658 3 16.4829 3.12941M16.9658 11.2588 16.4829 11.1294M2 7 2.5 7M3.03418 3 3.51714 3.12941M3.03418 11.2588 3.51714 11.1294"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-light-off dark"><path d="M8 14L8.28283 16.4684C8.35276 17.0786 8.38772 17.3837 8.55097 17.6009C8.63047 17.7067 8.73017 17.7956 8.8443 17.8625C9.07862 18 9.38575 18 10 18V18C10.6143 18 10.9214 18 11.1557 17.8625C11.2698 17.7956 11.3695 17.7067 11.449 17.6009C11.6123 17.3837 11.6472 17.0786 11.7172 16.4684L12 14"></path><path d="M15 7C15 10.1518 13.5 10.5 13 11.5C12.5 12.5 12.6096 14.5 10 14.5C7.39038 14.5 7.5 12.5 7 11.5C6.5 10.5 5 10.1518 5 7C5 4.23858 7.23858 2 10 2C12.7614 2 15 4.23858 15 7Z"></path></svg>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" data-bs-toggle="dropdown" data-bs-target="#notifications" aria-haspopup="true" aria-expanded="false" class="notification-button">
+                            <div class="position-relative d-inline-flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-bell undefined"><path opacity="0.9" d="M11 18H10H9"></path><path d="M6 7.38161V5.6718C6 4.25597 6.83142 2.97212 8.12338 2.39297C8.70126 2.13392 9.32738 2 9.96066 2H10.0393C10.6726 2 11.2987 2.13392 11.8766 2.39297C13.1686 2.97212 14 4.25597 14 5.6718V7.38161C14 8.44715 14.2374 9.4993 14.6949 10.4616L15.578 12.3193C15.8428 12.8762 15.8216 13.5267 15.5213 14.0653C15.1995 14.6423 14.5905 15 13.9297 15H6.07028C5.40953 15 4.80053 14.6423 4.4787 14.0653C4.17837 13.5267 4.15724 12.8762 4.42198 12.3193L5.30513 10.4616C5.76263 9.4993 6 8.44715 6 7.38161Z"></path></svg>
+                                <span class="position-absolute notification-dot rounded-xl"></span>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end wide notification-dropdown scroll-out" id="notifications">
+                            <div class="scroll os-host os-theme-dark os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-scrollbar-vertical-hidden os-host-transition">
+                                <div class="os-resize-observer-host observed"><div class="os-resize-observer" style="left: 0px; right: auto;"></div></div><div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;"><div class="os-resize-observer"></div></div><div class="os-content-glue" style="margin: 0px -15px; width: 29px;"></div><div class="os-padding">
+                                    <div class="os-viewport os-viewport-native-scrollbars-invisible">
+                                        <div class="os-content" style="padding: 0px 15px; height: 100%; width: 100%;">
+                                            <ul class="list-unstyled border-last-none">
+                                                <li class="mb-3 pb-3 border-bottom border-separator-light d-flex">
+                                                    <img src="/Assets/img/profile/profile-1.webp" class="me-3 sw-4 sh-4 rounded-xl align-self-center" alt="...">
+                                                    <div class="align-self-center">
+                                                        <a href="#">Joisse Kaycee just sent a new comment!</a>
+                                                    </div>
+                                                </li>
+                                                <li class="mb-3 pb-3 border-bottom border-separator-light d-flex">
+                                                    <img src="/Assets/img/profile/profile-2.webp" class="me-3 sw-4 sh-4 rounded-xl align-self-center" alt="...">
+                                                    <div class="align-self-center">
+                                                        <a href="#">New order received! It is total $147,20.</a>
+                                                    </div>
+                                                </li>
+                                                <li class="mb-3 pb-3 border-bottom border-separator-light d-flex">
+                                                    <img src="/Assets/img/profile/profile-3.webp" class="me-3 sw-4 sh-4 rounded-xl align-self-center" alt="...">
+                                                    <div class="align-self-center">
+                                                        <a href="#">3 items just added to wish list by a user!</a>
+                                                    </div>
+                                                </li>
+                                                <li class="pb-3 pb-3 border-bottom border-separator-light d-flex">
+                                                    <img src="/Assets/img/profile/profile-6.webp" class="me-3 sw-4 sh-4 rounded-xl align-self-center" alt="...">
+                                                    <div class="align-self-center">
+                                                        <a href="#">Kirby Peters just sent a new message!</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden"><div class="os-scrollbar-track os-scrollbar-track-off"><div class="os-scrollbar-handle" style="transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-scrollbar-unusable os-scrollbar-auto-hidden"><div class="os-scrollbar-track os-scrollbar-track-off"><div class="os-scrollbar-handle" style="transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar-corner"></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="menu-container flex-grow-1">
+
+                    <ul id="menu" class="menu show">
+                        <li class="dropdown">
+                            <a href="/AdminHome/AdminDeshboard">
+                                <i class="mdi mdi-home"></i>
+                                <span class="label">Deshboard</span>
+                            </a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="/Category/CategoryIndex">
+                                <i class="nav-icon fas fa-adversal"></i>
+                                <span class="label">Category</span>
+                            </a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="/SubCategory/SubCategoryIndex">
+                                <i class="nav-icon fas fa-address-book"></i>
+                                <span class="label">SubCategory</span>
+                            </a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">
+                                <i class="nav-icon fas fa-adjust"></i>
+                                <span class="label">Product</span>
+                            </a>
+                            <ul id="dashboards" class="dropdown-menu opacityIn">
+                                <li>
+                                    <a href="/Product/ProductIndex" class="active">
+                                        <span class="label">Add Product</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Product/ProductDataShow">
+                                        <span class="label">Product List</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+                        <li class="dropdown">
+                            <a href="/Product/ProductIndex">
+                                <i class="nav-icon fas fa-adjust"></i>
+                                <span class="label">Interface</span>
+                            </a>
+                            <ul id="dashboards" class="dropdown-menu opacityIn">
+                                <li>
+                                    <a href="/Unit/UnitIndex" class="active">
+                                        <span class="label">Unit</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Color/ColorIndex">
+                                        <span class="label">Color</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/Order/OrderIndex">
+                                <i class="nav-icon fas fa-adversal"></i>
+                                <span class="label">Customer Orders</span>
+                            </a>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="mobile-buttons-container">
+                    <a href="#" id="scrollSpyButton" class="spy-button" data-bs-toggle="dropdown">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-menu-dropdown undefined"><path d="M2 3 18 3M2 10 18 10M13 15 10.3536 17.6464C10.1583 17.8417 9.84171 17.8417 9.64645 17.6464L7 15"></path></svg>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end" id="scrollSpyDropdown"></div>
+                    <a href="#" id="mobileMenuButton" class="menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-menu undefined"><path d="M2 3 18 3M2 10 18 10M2 17 18 17"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-shadow"></div>
+        </div>
+        <main>
+            @RenderBody()
+        </main>
+        <footer>
+            <div class="footer-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <p class="mb-0 text-muted text-medium">Colored Strategies 2021</p>
+                        </div>
+                        <div class="col-sm-6 d-none d-sm-block">
+                            <ul class="breadcrumb pt-0 pe-0 mb-0 float-end">
+                                <li class="breadcrumb-item mb-0 text-medium">
+                                    <a href="https://1.envato.market/BX5oGy" target="_blank" class="btn-link">Review</a>
+                                </li>
+                                <li class="breadcrumb-item mb-0 text-medium">
+                                    <a href="https://1.envato.market/BX5oGy" target="_blank" class="btn-link">Purchase</a>
+                                </li>
+                                <li class="breadcrumb-item mb-0 text-medium"><a href="https://acorn-html-docs.coloredstrategies.com/" target="_blank" class="btn-link">Docs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="modal fade modal-right scroll-out-negative" id="settings" data-bs-backdrop="true" tabindex="-1" role="dialog" aria-labelledby="settings" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable full" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Theme Settings</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="scroll-track-visible os-host os-theme-dark os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-scrollbar-vertical-hidden os-host-transition">
+                        <div class="os-resize-observer-host observed"><div class="os-resize-observer" style="left: 0px; right: auto;"></div></div><div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;"><div class="os-resize-observer"></div></div><div class="os-content-glue" style="margin: 0px; width: 14px;"></div><div class="os-padding">
+                            <div class="os-viewport os-viewport-native-scrollbars-invisible">
+                                <div class="os-content" style="padding: 0px; height: 100%; width: 100%;">
+                                    <div class="mb-5" id="color">
+                                        <label class="mb-3 d-inline-block form-label">Color</label>
+                                        <div class="row d-flex g-3 justify-content-between flex-wrap mb-3">
+                                            <a href="#" class="flex-grow-1 w-50 option col active" data-value="light-blue" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="blue-light"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">LIGHT BLUE</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="dark-blue" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="blue-dark"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">DARK BLUE</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="row d-flex g-3 justify-content-between flex-wrap mb-3">
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="light-teal" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="teal-light"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">LIGHT TEAL</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="dark-teal" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="teal-dark"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">DARK TEAL</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="row d-flex g-3 justify-content-between flex-wrap mb-3">
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="light-sky" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="sky-light"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">LIGHT SKY</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="dark-sky" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="sky-dark"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">DARK SKY</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="row d-flex g-3 justify-content-between flex-wrap mb-3">
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="light-red" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="red-light"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">LIGHT RED</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="dark-red" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="red-dark"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">DARK RED</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="row d-flex g-3 justify-content-between flex-wrap mb-3">
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="light-green" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="green-light"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">LIGHT GREEN</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="dark-green" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="green-dark"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">DARK GREEN</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="row d-flex g-3 justify-content-between flex-wrap mb-3">
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="light-lime" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="lime-light"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">LIGHT LIME</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="dark-lime" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="lime-dark"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">DARK LIME</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="row d-flex g-3 justify-content-between flex-wrap mb-3">
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="light-pink" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="pink-light"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">LIGHT PINK</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="dark-pink" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="pink-dark"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">DARK PINK</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="row d-flex g-3 justify-content-between flex-wrap mb-3">
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="light-purple" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="purple-light"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">LIGHT PURPLE</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="dark-purple" data-parent="color">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow color">
+                                                    <div class="purple-dark"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">DARK PURPLE</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5" id="navcolor">
+                                        <label class="mb-3 d-inline-block form-label">Override Nav Palette</label>
+                                        <div class="row d-flex g-3 justify-content-between flex-wrap">
+                                            <a href="#" class="flex-grow-1 w-33 option col active" data-value="default" data-parent="navcolor">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow">
+                                                    <div class="figure figure-primary top"></div>
+                                                    <div class="figure figure-secondary bottom"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">DEFAULT</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-33 option col" data-value="light" data-parent="navcolor">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow">
+                                                    <div class="figure figure-secondary figure-light top"></div>
+                                                    <div class="figure figure-secondary bottom"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">LIGHT</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-33 option col" data-value="dark" data-parent="navcolor">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow">
+                                                    <div class="figure figure-muted figure-dark top"></div>
+                                                    <div class="figure figure-secondary bottom"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">DARK</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5" id="placement">
+                                        <label class="mb-3 d-inline-block form-label">Menu Placement</label>
+                                        <div class="row d-flex g-3 justify-content-between flex-wrap">
+                                            <a href="#" class="flex-grow-1 w-50 option col active" data-value="horizontal" data-parent="placement">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow">
+                                                    <div class="figure figure-primary top"></div>
+                                                    <div class="figure figure-secondary bottom"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">HORIZONTAL</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="vertical" data-parent="placement">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow">
+                                                    <div class="figure figure-primary left"></div>
+                                                    <div class="figure figure-secondary right"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">VERTICAL</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5" id="behaviour">
+                                        <label class="mb-3 d-inline-block form-label">Menu Behaviour</label>
+                                        <div class="row d-flex g-3 justify-content-between flex-wrap">
+                                            <a href="#" class="flex-grow-1 w-50 option col active" data-value="pinned" data-parent="behaviour">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow">
+                                                    <div class="figure figure-primary left large"></div>
+                                                    <div class="figure figure-secondary right small"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">PINNED</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="unpinned" data-parent="behaviour">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow">
+                                                    <div class="figure figure-primary left"></div>
+                                                    <div class="figure figure-secondary right"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">UNPINNED</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5" id="layout">
+                                        <label class="mb-3 d-inline-block form-label">Layout</label>
+                                        <div class="row d-flex g-3 justify-content-between flex-wrap">
+                                            <a href="#" class="flex-grow-1 w-50 option col active" data-value="fluid" data-parent="layout">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow">
+                                                    <div class="figure figure-primary top"></div>
+                                                    <div class="figure figure-secondary bottom"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">FLUID</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-50 option col" data-value="boxed" data-parent="layout">
+                                                <div class="card rounded-md p-3 mb-1 no-shadow">
+                                                    <div class="figure figure-primary top"></div>
+                                                    <div class="figure figure-secondary bottom small"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">BOXED</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5" id="radius">
+                                        <label class="mb-3 d-inline-block form-label">Radius</label>
+                                        <div class="row d-flex g-3 justify-content-between flex-wrap">
+                                            <a href="#" class="flex-grow-1 w-33 option col active" data-value="rounded" data-parent="radius">
+                                                <div class="card rounded-md radius-rounded p-3 mb-1 no-shadow">
+                                                    <div class="figure figure-primary top"></div>
+                                                    <div class="figure figure-secondary bottom"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">ROUNDED</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-33 option col" data-value="standard" data-parent="radius">
+                                                <div class="card rounded-md radius-regular p-3 mb-1 no-shadow">
+                                                    <div class="figure figure-primary top"></div>
+                                                    <div class="figure figure-secondary bottom"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">STANDARD</span>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="flex-grow-1 w-33 option col" data-value="flat" data-parent="radius">
+                                                <div class="card rounded-md radius-flat p-3 mb-1 no-shadow">
+                                                    <div class="figure figure-primary top"></div>
+                                                    <div class="figure figure-secondary bottom"></div>
+                                                </div>
+                                                <div class="text-muted text-part">
+                                                    <span class="text-extra-small align-middle">FLAT</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable"><div class="os-scrollbar-track os-scrollbar-track-off"><div class="os-scrollbar-handle" style="transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-scrollbar-unusable"><div class="os-scrollbar-track os-scrollbar-track-off"><div class="os-scrollbar-handle" style="transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar-corner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade modal-right scroll-out-negative" id="niches" data-bs-backdrop="true" tabindex="-1" role="dialog" aria-labelledby="niches" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable full" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Niches</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="scroll-track-visible os-host os-theme-dark os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-scrollbar-vertical-hidden os-host-transition">
+                        <div class="os-resize-observer-host observed"><div class="os-resize-observer" style="left: 0px; right: auto;"></div></div><div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;"><div class="os-resize-observer"></div></div><div class="os-content-glue" style="margin: 0px; width: 14px;"></div><div class="os-padding">
+                            <div class="os-viewport os-viewport-native-scrollbars-invisible">
+                                <div class="os-content" style="padding: 0px; height: 100%; width: 100%;">
+                                    <div class="mb-5">
+                                        <label class="mb-2 d-inline-block form-label">Classic Dashboard</label>
+                                        <div class="hover-reveal-buttons position-relative hover-reveal cursor-default">
+                                            <div class="position-relative mb-3 mb-lg-5 rounded-sm">
+                                                <img src="https://acorn.coloredstrategies.com//Assets/img/page/classic-dashboard.webp" class="img-fluid rounded-sm lower-opacity border border-separator-light" alt="card image">
+                                                <div class="position-absolute reveal-content rounded-sm absolute-center-vertical text-center w-100">
+                                                    <a target="_blank" href="index.html" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        Html
+                                                    </a>
+                                                    <a target="_blank" href="https://acorn-laravel-classic-dashboard.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        Laravel
+                                                    </a>
+                                                    <a target="_blank" href="https://acorn-dotnet-classic-dashboard.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        .Net5
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <label class="mb-2 d-inline-block form-label">Medical Assistant</label>
+                                        <div class="hover-reveal-buttons position-relative hover-reveal cursor-default">
+                                            <div class="position-relative mb-3 mb-lg-5 rounded-sm">
+                                                <img src="https://acorn.coloredstrategies.com//Assets/img/page/medical-assistant.webp" class="img-fluid rounded-sm lower-opacity border border-separator-light" alt="card image">
+                                                <div class="position-absolute reveal-content rounded-sm absolute-center-vertical text-center w-100">
+                                                    <a target="_blank" href="https://acorn-html-medical-assistant.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        Html
+                                                    </a>
+                                                    <a target="_blank" href="https://acorn-laravel-medical-assistant.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        Laravel
+                                                    </a>
+                                                    <a target="_blank" href="https://acorn-dotnet-medical-assistant.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        .Net5
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <label class="mb-2 d-inline-block form-label">Service Provider</label>
+                                        <div class="hover-reveal-buttons position-relative hover-reveal cursor-default">
+                                            <div class="position-relative mb-3 mb-lg-5 rounded-sm">
+                                                <img src="https://acorn.coloredstrategies.com//Assets/img/page/service-provider.webp" class="img-fluid rounded-sm lower-opacity border border-separator-light" alt="card image">
+                                                <div class="position-absolute reveal-content rounded-sm absolute-center-vertical text-center w-100">
+                                                    <a target="_blank" href="https://acorn-html-service-provider.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        Html
+                                                    </a>
+                                                    <a target="_blank" href="https://acorn-laravel-service-provider.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        Laravel
+                                                    </a>
+                                                    <a target="_blank" href="https://acorn-dotnet-service-provider.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        .Net5
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <label class="mb-2 d-inline-block form-label">Elearning Portal</label>
+                                        <div class="hover-reveal-buttons position-relative hover-reveal cursor-default">
+                                            <div class="position-relative mb-3 mb-lg-5 rounded-sm">
+                                                <img src="https://acorn.coloredstrategies.com//Assets/img/page/elearning-portal.webp" class="img-fluid rounded-sm lower-opacity border border-separator-light" alt="card image">
+                                                <div class="position-absolute reveal-content rounded-sm absolute-center-vertical text-center w-100">
+                                                    <a target="_blank" href="https://acorn-html-elearning-portal.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        Html
+                                                    </a>
+                                                    <a target="_blank" href="https://acorn-laravel-elearning-portal.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        Laravel
+                                                    </a>
+                                                    <a target="_blank" href="https://acorn-dotnet-elearning-portal.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        .Net5
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <label class="mb-2 d-inline-block form-label">Ecommerce Platform</label>
+                                        <div class="hover-reveal-buttons position-relative hover-reveal cursor-default">
+                                            <div class="position-relative mb-3 mb-lg-5 rounded-sm">
+                                                <img src="https://acorn.coloredstrategies.com//Assets/img/page/ecommerce-platform.webp" class="img-fluid rounded-sm lower-opacity border border-separator-light" alt="card image">
+                                                <div class="position-absolute reveal-content rounded-sm absolute-center-vertical text-center w-100">
+                                                    <a target="_blank" href="https://acorn-html-ecommerce-platform.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        Html
+                                                    </a>
+                                                    <a target="_blank" href="https://acorn-laravel-ecommerce-platform.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        Laravel
+                                                    </a>
+                                                    <a target="_blank" href="https://acorn-dotnet-ecommerce-platform.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        .Net5
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <label class="mb-2 d-inline-block form-label">Starter Project</label>
+                                        <div class="hover-reveal-buttons position-relative hover-reveal cursor-default">
+                                            <div class="position-relative mb-3 mb-lg-5 rounded-sm">
+                                                <img src="https://acorn.coloredstrategies.com//Assets/img/page/starter-project.webp" class="img-fluid rounded-sm lower-opacity border border-separator-light" alt="card image">
+                                                <div class="position-absolute reveal-content rounded-sm absolute-center-vertical text-center w-100">
+                                                    <a target="_blank" href="https://acorn-html-starter-project.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        Html
+                                                    </a>
+                                                    <a target="_blank" href="https://acorn-laravel-starter-project.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        Laravel
+                                                    </a>
+                                                    <a target="_blank" href="https://acorn-dotnet-starter-project.coloredstrategies.com/" class="btn btn-primary btn-sm sw-10 sw-lg-12 d-block mx-auto my-1">
+                                                        .Net5
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable"><div class="os-scrollbar-track os-scrollbar-track-off"><div class="os-scrollbar-handle" style="transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-scrollbar-unusable"><div class="os-scrollbar-track os-scrollbar-track-off"><div class="os-scrollbar-handle" style="transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar-corner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="settings-buttons-container">
+        <button type="button" class="btn settings-button btn-primary p-0" data-bs-toggle="modal" data-bs-target="#settings" id="settingsButton">
+            <span class="d-inline-block no-delay" data-bs-delay="0" data-bs-offset="0,3" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Settings">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-paint-roller position-relative"><path d="M16 4.5V4.5C16 4.03534 16 3.80302 15.9616 3.60982C15.8038 2.81644 15.1836 2.19624 14.3902 2.03843C14.197 2 13.9647 2 13.5 2L4.5 2C4.03534 2 3.80302 2 3.60982 2.03843C2.81644 2.19624 2.19624 2.81644 2.03843 3.60982C2 3.80302 2 4.03534 2 4.5V4.5C2 4.96466 2 5.19698 2.03843 5.39018C2.19624 6.18356 2.81644 6.80376 3.60982 6.96157C3.80302 7 4.03534 7 4.5 7L13.5 7C13.9647 7 14.197 7 14.3902 6.96157C15.1836 6.80376 15.8038 6.18356 15.9616 5.39018C16 5.19698 16 4.96466 16 4.5V4.5ZM16 4.5V4.5C16.4659 4.5 16.6989 4.5 16.8827 4.57612C17.1277 4.67761 17.3224 4.87229 17.4239 5.11732C17.5 5.30109 17.5 5.53406 17.5 6V8.25C17.5 8.95223 17.5 9.30335 17.3315 9.55557C17.2585 9.66476 17.1648 9.75851 17.0556 9.83147C16.8033 10 16.4522 10 15.75 10H11.75C11.0478 10 10.6967 10 10.4444 10.1685C10.3352 10.2415 10.2415 10.3352 10.1685 10.4444C10 10.6967 10 11.0478 10 11.75V13.5"></path><path d="M10.125 13C10.4761 13 10.6517 13 10.7778 13.0843C10.8324 13.1207 10.8793 13.1676 10.9157 13.2222C11 13.3483 11 13.5239 11 13.875L11 17.125C11 17.4761 11 17.6517 10.9157 17.7778C10.8793 17.8324 10.8324 17.8793 10.7778 17.9157C10.6517 18 10.4761 18 10.125 18L9.875 18C9.52388 18 9.34833 18 9.22221 17.9157C9.16762 17.8793 9.12074 17.8324 9.08427 17.7778C9 17.6517 9 17.4761 9 17.125L9 13.875C9 13.5239 9 13.3483 9.08427 13.2222C9.12074 13.1676 9.16762 13.1207 9.22222 13.0843C9.34833 13 9.52388 13 9.875 13L10.125 13Z"></path></svg>
+            </span>
+        </button>
+        <button type="button" class="btn settings-button btn-primary p-0" data-bs-toggle="modal" data-bs-target="#niches" id="nichesButton">
+            <span class="d-inline-block no-delay" data-bs-delay="0" data-bs-offset="0,3" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Niches">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-toy position-relative"><path d="M10 9 10 2M16 13V10C16 7.79086 14.2091 6 12 6L8 6C5.79086 6 4 7.79086 4 10V13M6 2H14"></path><path d="M5.26256 14.2626C5.75912 14.7591 6.00739 15.0074 6.06657 15.3049 6.09219 15.4337 6.09219 15.5663 6.06657 15.6951 6.00739 15.9926 5.75912 16.2409 5.26256 16.7374L5.23744 16.7626C4.74088 17.2591 4.49261 17.5074 4.19509 17.5666 4.06629 17.5922 3.93371 17.5922 3.80491 17.5666 3.50739 17.5074 3.25912 17.2591 2.76256 16.7626L2.73744 16.7374C2.24088 16.2409 1.99261 15.9926 1.93343 15.6951 1.90781 15.5663 1.90781 15.4337 1.93343 15.3049 1.99261 15.0074 2.24088 14.7591 2.73744 14.2626L2.76256 14.2374C3.25912 13.7409 3.50739 13.4926 3.80491 13.4334 3.93371 13.4078 4.06629 13.4078 4.19509 13.4334 4.49261 13.4926 4.74088 13.7409 5.23744 14.2374L5.26256 14.2626zM17.2626 14.2626C17.7591 14.7591 18.0074 15.0074 18.0666 15.3049 18.0922 15.4337 18.0922 15.5663 18.0666 15.6951 18.0074 15.9926 17.7591 16.2409 17.2626 16.7374L17.2374 16.7626C16.7409 17.2591 16.4926 17.5074 16.1951 17.5666 16.0663 17.5922 15.9337 17.5922 15.8049 17.5666 15.5074 17.5074 15.2591 17.2591 14.7626 16.7626L14.7374 16.7374C14.2409 16.2409 13.9926 15.9926 13.9334 15.6951 13.9078 15.5663 13.9078 15.4337 13.9334 15.3049 13.9926 15.0074 14.2409 14.7591 14.7374 14.2626L14.7626 14.2374C15.2591 13.7409 15.5074 13.4926 15.8049 13.4334 15.9337 13.4078 16.0663 13.4078 16.1951 13.4334 16.4926 13.4926 16.7409 13.7409 17.2374 14.2374L17.2626 14.2626zM11.2626 10.2626C11.7591 10.7591 12.0074 11.0074 12.0666 11.3049 12.0922 11.4337 12.0922 11.5663 12.0666 11.6951 12.0074 11.9926 11.7591 12.2409 11.2626 12.7374L11.2374 12.7626C10.7409 13.2591 10.4926 13.5074 10.1951 13.5666 10.0663 13.5922 9.93371 13.5922 9.80491 13.5666 9.50739 13.5074 9.25912 13.2591 8.76256 12.7626L8.73744 12.7374C8.24088 12.2409 7.99261 11.9926 7.93343 11.6951 7.90781 11.5663 7.90781 11.4337 7.93343 11.3049 7.99261 11.0074 8.24088 10.7591 8.73744 10.2626L8.76256 10.2374C9.25912 9.74088 9.50739 9.49261 9.80491 9.43343 9.93371 9.40781 10.0663 9.40781 10.1951 9.43343 10.4926 9.49261 10.7409 9.74088 11.2374 10.2374L11.2626 10.2626z"></path></svg>
+            </span>
+        </button>
+    </div>
+    <div class="modal fade modal-under-nav modal-search modal-close-out" id="searchPagesModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0 p-0">
+                    <button type="button" class="btn-close btn btn-icon btn-icon-only btn-foreground" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ps-5 pe-5 pb-0 border-0">
+                    <input id="searchPagesInput" class="form-control form-control-xl borderless ps-0 pe-0 mb-1 auto-complete" type="text" autocomplete="off" placeholder="Loading"><ul id="searchPagesResults" class="auto-complete-result"></ul>
+                </div>
+                <div class="modal-footer border-top justify-content-start ps-5 pe-5 pb-3 pt-3 border-0">
+                    <span class="text-alternate d-inline-block m-0 me-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-arrow-bottom text-alternate align-middle me-1"><path d="M17 11 10.3536 17.6464C10.1583 17.8417 9.84171 17.8417 9.64645 17.6464L3 11M10 2 10 17"></path></svg>
+                        <span class="align-middle text-medium">Navigate</span>
+                    </span>
+                    <span class="text-alternate d-inline-block m-0 me-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-arrow-bottom-left text-alternate align-middle me-1"><path d="M7 8L2.35355 12.6464C2.15829 12.8417 2.15829 13.1583 2.35355 13.3536L7 18"></path><path d="M17.5 2V9C17.5 10.0609 17.0786 11.0783 16.3284 11.8284C15.5783 12.5786 14.5609 13 13.5 13H2"></path></svg>
+                        <span class="align-middle text-medium">Select</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/Assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="/Assets/js/vendor/OverlayScrollbars.min.js"></script>
+    <script src="/Assets/js/vendor/autoComplete.min.js"></script>
+    <script src="/Assets/js/vendor/clamp.min.js"></script>
+    <script src="/Assets/icon/acorn-icons-commerce.js"></script>
+    <script src="/Assets/icon/acorn-icons.js"></script>
+    <script src="/Assets/icon/acorn-icons-interface.js"></script>
+    <script src="/Assets/icon/acorn-icons-learning.js"></script>
+    <script src="/Assets/icon/acorn-icons-medical.js"></script>
+    <script src="/Assets/js/vendor/Chart.bundle.min.js"></script>
+    <script src="/Assets/js/vendor/chartjs-plugin-datalabels.js"></script>
+    <script src="/Assets/js/vendor/chartjs-plugin-rounded-bar.min.js"></script>
+    <script src="/Assets/js/vendor/glide.min.js"></script>
+    <script src="/Assets/js/vendor/intro.min.js"></script>
+    <script src="/Assets/js/vendor/select2.full.min.js"></script>
+    <script src="/Assets/js/vendor/plyr.min.js"></script>
+    <script src="/Assets/js/base/helpers.js"></script>
+    <script src="/Assets/js/base/globals.js"></script>
+    <script src="/Assets/js/base/nav.js"></script>
+    <script src="/Assets/js/base/search.js"></script>
+    <script src="/Assets/js/base/settings.js"></script>
+    @*<script src="/Assets/js/cs/datatable.extend.js"></script>
+    <script src="/Assets/js/plugins/datatable.editablerows.js"></script>
+    <script src="/Assets/js/vendor/datatables.min.js"></script>*@
+    <script src="/Assets/js/cs/glide.custom.js"></script>
+    <script src="/Assets/js/cs/charts.extend.js"></script>
+    <script src="/Assets/js/pages/dashboard.default.js"></script>
+    <script src="/Assets/js/common.js"></script>
+    <script src="/Assets/js/scripts.js"></script>
+    @*<script src="/Assets/js/vendor/datatables.min.js"></script>*@
+
+</body>
+</html>
+

@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "ProductIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int? Id = 0;
+    if (!string.IsNullOrEmpty(Request.QueryString["Id"]))
+    {
+        Id = Convert.ToInt32(Request.QueryString["Id"]);
+    }
+
+}
+<div class="page-title-container">
+    <div class="row">
+        <div class="col-12 col-md-7">
+            <h1 class="mb-0 pb-0 display-4" id="title">Add Product </h1>
+        </div>
+        <div class="col-12 col-md-5 d-flex align-items-start justify-content-end">
+            <a href="/Product/ProductDataShow" class="btn btn-outline-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable">
+                <i data-acorn-icon="plus"></i>
+                <span>View List</span>
+            </a>     
+        </div>
+    </div>
+</div>
+
+<section class="scroll-section" id="basic">
+    <div class="card mb-5">
+        <div class="card-body">
+          <div id="formpartialGet">
+
+          </div>
+           
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        if (@Id> 0) {
+            GETFrm('@Id');
+        }
+        else
+        {
+            GETFrm(null);
+        }
+
+    });
+    function GETFrm(Id) {
+        debugger;
+        $.ajax
+            ({
+                type: 'Get',
+                url: '/Product/ProductformGet',
+                data: {
+                    Id: Id
+                },
+                success: function (res) {
+                    $("#formpartialGet").html(res);
+
+                }
+            })
+    }
+</script>
+
+

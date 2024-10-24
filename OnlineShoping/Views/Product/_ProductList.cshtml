@@ -1,0 +1,155 @@
+﻿@model List<OnlineShoping.Models.ProductModel>
+
+<div class="modal fade scroll-out" id="overlayScrollLong" tabindex="-1" role="dialog" aria-labelledby="overlayScrollLongLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable long modal-dialog-centered">
+     <div id="productdes">
+
+     </div>
+    </div>
+</div>
+
+
+
+
+<link rel="stylesheet" href="/Assets/css/vendor/datatables.min.css">
+<div class="data-table-responsive-wrapper">
+    <table id="datatableRows" class="data-table nowrap hover">
+        <thead>
+            <tr>
+                <th class="text-muted text-small text-uppercase">Catogary</th>
+                <th class="text-muted text-small text-uppercase">SubCategory</th>
+                <th class="text-muted text-small text-uppercase">ProductName</th>
+                <th class="text-muted text-small text-uppercase">Discription</th>
+                <th class="text-muted text-small text-uppercase">Brand</th>
+                <th class="text-muted text-small text-uppercase">Unit</th>
+                <th class="text-muted text-small text-uppercase">Color</th>
+                <th class="text-muted text-small text-uppercase">Discount</th>
+                <th class="text-muted text-small text-uppercase">Image</th>
+                <th class="text-muted text-small text-uppercase">Status</th>
+                <th class="text-muted text-small text-uppercase">Action</th>
+                <th class="text-muted text-small text-uppercase">View Price</th>
+
+                <th class="empty">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.SubCategoryName</td>
+                    <td>@item.ProductName</td>
+                    <td><button onclick="disciption(@item.ProductId)" class="btn btn-primary">Discription</button></td>
+                    <td>@item.BrandId</td>
+                    <td>@item.UnitName</td>
+                    <td>@item.ColorName</td>
+                    <td>@item.Discount</td>
+                    <td> <img src="@item.Image.Split(',')[0]" alt="img" height="60" width="60" /></td>
+                    @*<td>@item.Status</td>*@
+
+                    @if (item.Status == 1)
+                    {
+                        <td> Active</td>
+                    }
+                    else
+                    {
+                        <td> In_Active</td>
+                    }
+
+                    <td> <button onclick="Addprice(@item.ProductId);" class="btn btn-primary">Add Price</button> </td>
+                    <td> <button onclick="ViewPrice(@item.ProductId);" class="btn btn-primary">View Price</button> </td>
+                    <td><a href="/Product/ProductIndex?Id=@item.ProductId">Edit</a></td>
+                    @*<td> <a href="#" onclick="Edit(@item.ProductId);" class="btn bg-success">Edit</a> </td>*@
+                    @*<td> <button onclick="Edit(@item.ProductId);" class="btn btn-primary">Edit</button> </td>*@
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade scroll-out" id="Modelshow" tabindex="-1" role="dialog" aria-labelledby="overlayScrollLongLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable long modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="overlayScrollLongLabel">Add Price</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="scroll-track-visible">
+                    <div id="formPartial">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade scroll-out" id="Viewprice" tabindex="-1" role="dialog" aria-labelledby="overlayScrollLongLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable long modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="overlayScrollLongLabel">View Price</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="scroll-track-visible">
+                    <div id="list">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="/Assets/js/vendor/bootstrap-submenu.js"></script>
+<script src="/Assets/js/vendor/datatables.min.js"></script>
+<script src="/Assets/js/vendor/mousetrap.min.js"></script>
+<script src="/Assets/js/cs/datatable.extend.js"></script>
+<script src="/Assets/js/plugins/datatable.editablerows.js"></script>
+<script src="/Assets/js/vendor/datatables.min.js"></script>
+<script>
+    $('#datatableRows').dataTable();
+</script>
+<script>
+
+    function disciption(Id) {
+        debugger;
+        $.ajax({
+            type: 'Get',
+            url: '/Product/productDis',
+            data: { Id: Id },
+            success: function (res) {
+                $('#productdes').html(res);
+                $('#overlayScrollLong').modal('show');
+            }
+        })
+    }
+
+    function Addprice(Id) {
+        debugger;
+        $.ajax({
+            type: 'Get',
+            url: '/Price/PricePartial',
+            data: { Id: Id },
+            success: function (res) {
+                $('#formPartial').html(res);
+                $('#Modelshow').modal('show');
+            }
+        })
+    }
+    function ViewPrice(Id) {
+        debugger;
+        $.ajax({
+            type: 'Get',
+            url: '/Price/PriceModlShow',
+            data: { Id: Id },
+            success: function (res) {
+                $('#list').html(res);
+                $('#Viewprice').modal('show');
+            }
+        })
+    }
+</script>

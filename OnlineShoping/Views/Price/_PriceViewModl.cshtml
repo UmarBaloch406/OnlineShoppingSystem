@@ -1,0 +1,27 @@
+﻿@model List<OnlineShoping.Models.PriceModel>
+
+<div class="data-table-responsive-wrapper">
+    <table id="datatableRows" class="data-table nowrap hover">
+        <thead>
+            <tr>
+                <th class="text-muted text-small text-uppercase"><h1>Product--------</h1></th>
+                <th class="text-muted text-small text-uppercase"><h1>Size--------</h1></th>
+                <th class="text-muted text-small text-uppercase"><h1>Price--------</h1></th>
+
+
+                <th class="empty">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.SizeName</td>
+                    <td>@item.Price</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,69 @@
+﻿@model OnlineShoping.Models.OrderModel
+<div class="mb-3">
+    <label class="form-label"> Change Status</label>
+    <form id="frm1" enctype="multipart/form-data">
+        @Html.HiddenFor(a => a.OrderId)
+        @Html.HiddenFor(a => a.CustomerEmail)
+        @Html.HiddenFor(a => a.CustomerName)
+        @Html.DropDownListFor(a => a.status, new List<SelectListItem>
+    {
+               new SelectListItem{Text="Pending" , Value="0"},
+               new SelectListItem{Text="Accept" , Value="1"} ,
+               new SelectListItem{Text="InProcess" , Value="2"} ,
+               new SelectListItem{Text="Shipped" , Value="3"},
+               new SelectListItem{Text="Received" , Value="4"},
+               new SelectListItem{Text="Reject" , Value="5"},}, "Change Status", new { @class = "form-control" })
+        <div class="modal-footer">
+
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </form>
+</div>
+<script>
+
+$(document).ready(function () {
+        Savee();
+});
+
+    function Savee() {
+        $('#frm1').submit(function (event) {
+            event.preventDefault();
+            var formdata = new FormData(document.getElementById('frm1'));
+            $.ajax
+                ({
+                    type: 'Post',
+                    url: '/Order/statusUpdate',
+                    processData: false,
+                    contentType: false,
+                    data: formdata,
+                    success: function (result) {
+                        if (result == 1) {
+                            toastr.success("Your Status is on Pending ");
+                            GETCart();
+                        }
+                       else if (result == 2) {
+                            toastr.success("Your Status is on Accept");
+                            GETCart();
+                        }
+                        else if (result == 3) {
+                            toastr.success("Your Status is on InProcess");
+                            GETCart();
+                        }
+                        else if (result == 4) {
+                            toastr.success("Your Status is on Shipped");
+                            GETCart();
+                        }
+                        else if (result == 5) {
+                            toastr.success("Your Status is on Received");
+                            GETCart();
+                        }
+                        else if (result == 5) {
+                            toastr.success("Your Status is on Reject");
+                            GETCart();
+                        }
+                    }
+                })
+        })
+    }</script>
+
+

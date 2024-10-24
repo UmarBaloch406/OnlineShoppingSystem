@@ -1,0 +1,55 @@
+﻿@model OnlineShoping.Models.AdminModel
+<section class="scroll-section" id="personal">
+    <h2 class="small-title">Admin Form</h2>
+    <form class="tooltip-end-top" enctype="multipart/form-data" id="frm33" novalidate>
+        <div class="card mb-5">
+            <div class="card-body">
+                @Html.HiddenFor(a => a.AdminId)
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <h3>Image File</h3>
+                        <label class="mb-3 top-label">
+                            @Html.TextBoxFor(a => a.Imagefile, new { @class = "form-control", type = "file" })
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer border-0 pt-0 d-flex justify-content-end align-items-center">
+                <div>
+                    <input class="btn btn-icon btn-icon-end btn-primary" type="submit" name="name" value="" />
+                  
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+<script>
+    $(document).ready(function () {
+        Save();
+    })  
+    function Save() {
+        
+        $('#frm33').submit(function (event) {
+            event.preventDefault();
+            debugger;
+            var formdata = new FormData(document.getElementById('frm33'));
+            $.ajax
+                ({
+                    type: 'Post',
+                    url: '/AdminHome/ImageSave',
+                    processData: false,
+                    contentType: false,
+                    data: formdata,
+                    success: function (result) {
+                        if (result ==1) {
+                            toastr.success("Image has been successfully Saved");
+
+                            AdminUpdateGEt()
+                        }
+                    }
+                })
+        })
+    }
+    </script>
+

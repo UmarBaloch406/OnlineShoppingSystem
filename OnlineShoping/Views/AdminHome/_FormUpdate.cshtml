@@ -1,0 +1,97 @@
+﻿@model OnlineShoping.Models.AdminModel
+<section class="scroll-section" id="personal">
+    <form class="tooltip-end-top" id="frm1" novalidate>
+        <div class="card mb-5">
+            <div class="card-body">
+                @Html.HiddenFor(a => a.AdminId)
+                <div class="row g-3">
+                    <h1>Admin Update</h1>
+                    <div class="col-md-6">
+                        <h5>First Name</h5>
+                        <label class="mb-3 top-label">
+                            @Html.TextBoxFor(a => a.AdminFirstName, new { @class = "form-control" })
+                            <span>First Name</span>
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Last Name</h5>
+                        <label class="mb-3 top-label">
+                            @Html.TextBoxFor(a => a.AdminLastName, new { @class = "form-control" })
+                            <span>Last Name</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <h5>Email</h5>
+                        <label class="mb-3 top-label">
+                            @Html.TextBoxFor(a => a.AdminEmail, new { @class = "form-control" })
+                            <span>Email</span>
+                        </label>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <h5>Contact</h5>
+                            <label class="mb-3 top-label">
+                                @Html.TextBoxFor(a => a.AdminContact, new { @class = "form-control" })
+                                <span>Contact</span>
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Status</h5>
+                            <label class="mb-3 top-label">
+                                @Html.DropDownListFor(a => a.AdminStatus, new List<SelectListItem>
+{
+       new SelectListItem{Text="Active" , Value="1"},
+       new SelectListItem{Text="In-Active" , Value="0"} }, "Category Status", new { @class = "form-control" })
+
+                                <span>Status</span>
+                            </label>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-12">
+
+                                <label class="mb-3 top-label">
+                                    @Html.TextBoxFor(a => a.AdminAddress, new { @class = "form-control" })
+                                    <span>Address</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer border-0 pt-0 d-flex justify-content-end align-items-center">
+                    <div>
+                        <input class="btn btn-icon btn-icon-end btn-primary" type="submit" />
+                        <i data-acorn-icon="chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+<script>
+    $(document).ready(function () {
+        Save();
+    });
+    function Save() {
+        debugger;
+        $('#frm1').submit(function (event) {
+            event.preventDefault();
+            var formdata = new FormData(document.getElementById('frm1'));
+            $.ajax
+                ({
+                    type: 'Post',
+                    url: '/AdminHome/UpdateSave',
+                    processData: false,
+                    contentType: false,
+                    data: formdata,
+                    success: function (result) {
+                        if (result ==1) {
+                            toastr.success("Data has been successfully Saved");     
+                            AdminUpdateGEt();
+                        }
+                    }
+                })
+        })
+    }
+</script>

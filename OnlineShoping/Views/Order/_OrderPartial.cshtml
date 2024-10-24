@@ -1,0 +1,100 @@
+﻿@model List<OnlineShoping.Models.OrderModel>
+
+<table id="mainTable" class="table table-striped m-b-0">
+    <thead>
+        <tr>
+            <th>CustomerName</th>
+            <th>TotalPrice</th>
+            <th>Date</th>
+            <th>ZipCode</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CustomerName</td>
+                <td>@item.TotalPrice</td>
+                <td>@item.Date</td>
+                <td>@item.zipCode</td>
+                <td>@item.Address</td>
+                @if (item.status == 0)
+                {
+                    <td> Pending</td>
+                }
+                else if (item.status == 1)
+                {
+                    <td> Accept</td>
+                }
+                else if (item.status == 2)
+                {
+                    <td> InProcess</td>
+                }
+                else if (item.status == 3)
+                {
+                    <td> Shipped </td>
+                }
+                else if (item.status == 4)
+                {
+                    <td> Received</td>
+                }
+                else if (item.status == 5)
+                {
+                    <td> Reject</td>
+                }
+                <td><a href="/INVOICE/InVoiceIndex?OrderId=@item.OrderId">Invoice</a></td>
+
+                <td> <button onclick="ChangeStatus('@item.OrderId','@item.CustomerName','@item.CustomerEmail');" class="btn btn-primary">ChangeStatus</button> </td>
+
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th><strong>TOTAL</strong></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </tfoot>
+</table>
+<div class="modal fade scroll-out" id="overlayScrollLong" tabindex="-1" role="dialog" aria-labelledby="overlayScrollLongLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable long modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="overlayScrollLongLabel">View Price</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="scroll-track-visible">
+                    <div id="list">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    function ChangeStatus(Id,CustomerName,Email) {
+        debugger;
+        $.ajax({
+            type: 'Get',
+            url: '/Order/ChangeStatusMod',
+            data: {
+                Id: Id,
+                CustomerName: CustomerName,
+                Email: Email
+               
+            },
+            success: function (res) {
+                $('#list').html(res);
+                $('#overlayScrollLong').modal('show');
+            }
+        })
+    }
+</script>
+
+

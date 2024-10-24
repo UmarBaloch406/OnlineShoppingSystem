@@ -1,0 +1,54 @@
+﻿@model List<OnlineShoping.Models.CategoryModel>
+<link rel="stylesheet" href="/Assets/css/vendor/datatables.min.css">
+<div class="data-table-responsive-wrapper">
+    <table id="datatableRows" class="data-table nowrap hover">
+        <thead>
+            <tr>
+                <th class="text-muted text-small text-uppercase">Name</th>
+                <th class="text-muted text-small text-uppercase">Discription</th>
+                <th class="text-muted text-small text-uppercase">CreatedDate</th>
+                <th class="text-muted text-small text-uppercase">Status</th>
+                <th class="text-muted text-small text-uppercase">Picture</th>
+                <th class="text-muted text-small text-uppercase">Edit</th>
+                <th class="text-muted text-small text-uppercase">Delete</th>
+
+                <th class="empty">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.Name</td>
+                    <td> <buttton class="btn btn-primary" onclick="discription(@item.CatogaryId);">Discription</buttton></td>
+                    @*<td><a href="#"  class="btn btn-primary" onclick="discription(@item.CatogaryId);">Discription</a></td>*@
+                    @*<td>@item.Discription</td>*@
+                    <td>@Convert.ToDateTime(item.CreatedDate).ToString("dd MMM yyyy")</td>
+
+                    @if (item.Status == 1)
+                    {
+                        <td> Active</td>
+                    }
+                    else
+                    {
+                        <td> In_Active</td>
+                    }
+                    <td> <img src="@item.Image" alt="img" height="60" width="60" /></td>
+                    <td> <a href="#" onclick="Edit(@item.CatogaryId);" class="btn bg-success">Edit</a> </td>
+                    <td> <a href="#" onclick="Delete(@item.CatogaryId);" class="btn bg-danger">Delete</a> </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script src="/Assets/js/vendor/bootstrap-submenu.js"></script>
+<script src="/Assets/js/vendor/datatables.min.js"></script>
+<script src="/Assets/js/vendor/mousetrap.min.js"></script>
+<script src="/Assets/js/cs/datatable.extend.js"></script>
+<script src="/Assets/js/plugins/datatable.editablerows.js"></script>
+<script src="/Assets/js/vendor/datatables.min.js"></script>
+<script>
+    $('#datatableRows').DataTable();
+</script>

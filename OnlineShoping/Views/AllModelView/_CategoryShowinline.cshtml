@@ -1,0 +1,33 @@
+﻿@model OnlineShoping.Models.AllModel
+<div class="col-xl-3 col-lg-4 d-none d-lg-block">
+    <div class="vertical-menu mb-all-30">
+        <nav>
+            <ul class="vertical-menu-list">
+
+                @foreach (var item in Model.Categorys)
+                {
+                    <li class="">
+                        <a href="shop.html"><span><img src="/TrueMartAssets/img/vertical-menu/1.png" alt="menu-icon"></span>@item.Name<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        <ul class="ht-dropdown mega-child">
+                            @foreach (var sub in Model.SubCategorys)
+                            {
+                                if (item.CatogaryId == sub.CatogaryId)
+                                {
+                                    <li>
+
+                                        <a href="!#">@sub.SubCategoryName</a>
+                                    </li>
+                                }
+
+
+                            }
+                        </ul>
+                    </li>
+                }
+
+
+                <!-- category submenu end-->
+            </ul>
+        </nav>
+    </div>
+</div>

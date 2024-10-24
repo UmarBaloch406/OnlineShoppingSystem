@@ -1,0 +1,42 @@
+﻿@model List<OnlineShoping.Models.PriceModel>
+
+<link rel="stylesheet" href="/Assets/css/vendor/datatables.min.css">
+
+<div class="data-table-responsive-wrapper">
+    <table id="datatableRows" class="data-table nowrap hover">
+        <thead>
+            <tr>
+                <th class="text-muted text-small text-uppercase">Product</th>
+                <th class="text-muted text-small text-uppercase">Size</th>
+                <th class="text-muted text-small text-uppercase">Price</th>
+                <th class="text-muted text-small text-uppercase">Edit</th>
+                <th class="text-muted text-small text-uppercase">Delete</th>
+
+                <th class="empty">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.SizeName</td>
+                    <td>@item.Price</td>
+                    <td> <a href="#" onclick="Edit(@item.PriceId);" class="btn bg-success">Edit</a> </td>
+                    <td> <a href="#" onclick="Delete(@item.PriceId);" class="btn bg-danger">Delete</a> </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="/Assets/js/vendor/bootstrap-submenu.js"></script>
+<script src="/Assets/js/vendor/datatables.min.js"></script>
+<script src="/Assets/js/vendor/mousetrap.min.js"></script>
+<script src="/Assets/js/cs/datatable.extend.js"></script>
+<script src="/Assets/js/plugins/datatable.editablerows.js"></script>
+<script src="/Assets/js/vendor/datatables.min.js"></script>
+<script>
+    $('#datatableRows').dataTable();
+</script>
+
+

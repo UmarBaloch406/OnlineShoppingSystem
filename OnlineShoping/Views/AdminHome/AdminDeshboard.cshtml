@@ -1,0 +1,222 @@
+﻿@model OnlineShoping.Models.AdminModel
+@{
+    ViewBag.Title = "AdminDeshboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="/Assets/DeshboardAss/c3/c3.min.css" rel="stylesheet" type="text/css" />
+
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <!-- end row -->
+
+
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="card m-b-20">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">Categories</h4>
+
+                        <ul class="list-inline widget-chart m-t-20 m-b-15 text-center">
+                            <li class="list-inline-item">
+                                <h5 class="mb-0">@Model.TotalCategory</h5>
+                                <p class="text-muted">Total Category</p>
+                            </li>
+                            <li class="list-inline-item">
+                                <h5 class="mb-0">@Model.ActiveCategory</h5>
+                                <p class="text-muted">Active</p>
+                            </li>
+                            <li class="list-inline-item">
+                                <h5 class="mb-0">@Model.InActiveCategory</h5>
+                                <p class="text-muted">Deactivated</p>
+                            </li>
+                        </ul>
+
+                        <div id="Category"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card m-b-20">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">Product </h4>
+
+                        <ul class="list-inline widget-chart m-t-20 m-b-15 text-center">
+                            <li class="list-inline-item">
+                                <h5 class="mb-0">@Model.TotalProduct</h5>
+                                <p class="text-muted">Total Product</p>
+                            </li>
+                            <li class="list-inline-item">
+                                <h5 class="mb-0">@Model.ActiveProduct</h5>
+                                <p class="text-muted">Active Product</p>
+                            </li>
+                            <li class="list-inline-item">
+                                <h5 class="mb-0">@Model.InActiveProduct</h5>
+                                <p class="text-muted">In Active product</p>
+                            </li>
+                        </ul>
+
+                        <div id="donut-chart"></div>
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+
+            <div class="col-xl-4">
+                <div class="card m-b-20">
+                    <div class="card-body">
+
+                        <h4 class="mt-0 header-title">Sub Categories</h4>
+
+                        <ul class="list-inline widget-chart m-t-20 m-b-15 text-center">
+                            <li class="list-inline-item">
+                                <h5 class="mb-0">@Model.TotalCategory</h5>
+                                <p class="text-muted">Total Category</p>
+                            </li>
+                            <li class="list-inline-item">
+                                <h5 class="mb-0">@Model.ActiveCategory</h5>
+                                <p class="text-muted">Active</p>
+                            </li>
+                            <li class="list-inline-item">
+                                <h5 class="mb-0">@Model.InActiveCategory</h5>
+                                <p class="text-muted">Deactivated</p>
+                            </li>
+                        </ul>
+
+                        <div id="pie-chart"></div>
+
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+    </div>
+    <!-- end container-fluid -->
+</div>
+<script src="/Assets/DeshboardAss/d3/d3.min.js"></script>
+<script src="/Assets/DeshboardAss/c3/c3.min.js"></script>
+<script>
+
+    /*
+     Template Name: Agroxa - Responsive Bootstrap 4 Admin Dashboard
+     Author: Themesbrand
+     File: C3 Chart init js
+     */
+
+    !function ($) {
+        "use strict";
+
+        var ChartC3 = function () { };
+
+        ChartC3.prototype.init = function () {
+
+             //Pie Chart
+            c3.generate({
+                bindto: '#Category',
+                data: {
+                    columns: [
+                        ['TotalCategories', '@Model.TotalCategory'],
+                        ['Active Categories', '@Model.ActiveCategory'],
+                        ['InActive Categories', '@Model.InActiveCategory']
+
+                    ],
+                    type: 'pie'
+                },
+                color: {
+                    pattern: ['#6c25be', '#bea925', '#2596be', '#2f8ee0']
+                },
+                pie: {
+                    label: {
+                        show: false
+                    }
+                }
+            });
+
+            //Donut Chart
+            c3.generate({
+                bindto: '#donut-chart',
+                data: {
+                    columns: [
+                        ['TotalProduct', '@Model.TotalProduct'],
+                        ['ActiveProduct', '@Model.ActiveProduct'],
+                        ['InActiveProduct', '@Model.InActiveProduct']
+                       
+                    ],
+                    type: 'donut'
+                },
+                donut: {
+                    title: "Candidates",
+                    width: 30,
+                    label: {
+                        show: false
+                    }
+                },
+                color: {
+                    pattern: ['#2f8ee0', '#bea925', '#28bbe3', '#2f8ee0']
+                }
+            });
+
+            //Pie Chart
+            c3.generate({
+                bindto: '#pie-chart',
+                data: {
+                    columns: [
+                        ['Total SubCategories', '@Model.TotalSubCategory'],
+                        ['Active SubCategories', '@Model.ActiveSubCategory'],
+                        ['InActive SubCategories', '@Model.InActiveSubCategory']
+
+                    ],
+                    type: 'pie'
+                },
+                color: {
+                    pattern: ['#be4d25', '#f16c69', '#28bbe3', '#2f8ee0']
+                },
+                pie: {
+                    label: {
+                        show: false
+                    }
+                }
+            });
+
+        },
+            $.ChartC3 = new ChartC3, $.ChartC3.Constructor = ChartC3
+
+    }(window.jQuery),
+
+        //initializing
+        function ($) {
+            "use strict";
+            $.ChartC3.init()
+        }(window.jQuery);
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

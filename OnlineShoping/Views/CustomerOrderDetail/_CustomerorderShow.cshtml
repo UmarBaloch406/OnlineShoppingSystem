@@ -1,0 +1,28 @@
+﻿@model List<OnlineShoping.Models.CustomerOrderDet>
+
+<table id="mainTable" class="table table-striped m-b-0">
+    <thead>
+        <tr>
+            <th>CustomerName</th>
+            <th>TotalPrice</th>
+            <th>Date</th>
+            <th>ZipCode</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CustomerName</td>
+                <td>@item.TotalPrice</td>
+                <td>@item.Date</td>
+                <td>@item.zipCode</td>
+                <td>@item.Address</td>
+                <td><a href="/INVOICE/InVoiceIndex?OrderId=@item.OrderId">Invoice</a></td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>

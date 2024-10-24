@@ -1,0 +1,185 @@
+﻿@model OnlineShoping.Models.ProductModel
+@using OnlineShoping.Models
+@{
+    CategoryModel m = new CategoryModel();
+    var list = m.CategoryShow();
+    SubCategoryModel s = new SubCategoryModel();
+    var sub = s.SubCategoryShow();
+    UnitModel UNI = new UnitModel();
+    var unit = UNI.UNITShow();
+    ColorModel Col = new ColorModel();
+    var Color = Col.ColorShow();
+}
+<form id="Frmdata" enctype="multipart/form-data">
+    @Html.HiddenFor(a => a.ProductId)
+    <div class="row g-3">
+        <div class="col-md-6">
+            <h5>Category Name  <span class="text-danger" id="MSGCatogaryId"></span></h5>
+            <label class="mb-3 top-label">
+                @Html.DropDownListFor(a => a.CatogaryId, new SelectList(list, "CatogaryId", "Name"), "Select category", new { onchange = "SubCatogaryShow();", @class = "form-control" })
+
+                <span>Category Name</span>
+            </label>
+        </div>
+        <div class="col-md-6">
+            <h5>SubCategory Name <span class="text-danger" id="MSGSubCategoryId"></span></h5>
+            <label class="mb-3 top-label">
+                @Html.DropDownListFor(a => a.SubCategoryId, new List<SelectListItem>()
+    {
+      new SelectListItem(){Text="select Sub Category" , Value=""}}, new { @class = "form-control" })
+
+                <span>SubCategory Name</span>
+            </label>
+        </div>
+    </div>
+    <div class="row g-3">
+
+        <div class="col-md-6">
+            <h5>Product Name <span class="text-danger" id="MSGProductName"></span></h5>
+            <label class="mb-3 top-label">
+                @Html.TextBoxFor(a => a.ProductName, new { @class = "form-control", placeholder = "Product Name" })
+
+                <span>Product Name</span>
+            </label>
+        </div>
+        <div class="col-md-6">
+            <h5>Picture <span class="text-danger" id="MSGImagefilee"></span></h5>
+            <label class="mb-3 top-label">
+                @Html.TextBoxFor(a => a.Imagefilee, new { @class = "form-control",multiple="true", type = "file" })
+
+                <span>Picture</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="row g-3">
+
+        <div class="col-md-4">
+            <h5>Unit</h5>
+            <label class="mb-3 top-label">
+                @Html.DropDownListFor(a => a.UnitId, new SelectList(unit, "UnitId", "UnitName"), "Select Unit", new { @class = "form-control" })
+
+                <span>Unit</span>
+            </label>
+        </div>
+        <div class="col-md-4">
+            <h5>Color</h5>
+            <label class="mb-3 top-label">
+                @Html.DropDownListFor(a => a.ColorId, new SelectList(Color, "ColorId", "ColorName"), "Select Color", new { @class = "form-control" })
+                <span>Color</span>
+            </label>
+        </div>
+        <div class="col-md-4">
+            <h5>Discount</h5>
+            <label class="mb-3 top-label">
+                @Html.TextBoxFor(a => a.Discount, new { @class = "form-control", placeholder = "Discount" })
+
+                <span>Discount</span>
+            </label>
+        </div>
+    </div>
+    @*<div class="mb-3 position-relative form-group">
+        <label class="form-label">Brand</label>*@
+    @*@Html.DropDownListFor(a => a.ColorId, new SelectList(unit, "ColorId", "ColorName"), "Select Color", new { @class = "form-control" })*@
+
+    <!--</div>-->
+    @*<div class="mb-3 position-relative form-group">
+            <label class="form-label">Is NEW Arrival</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="basicValidationCheckbox" id="basicValidationCustomCheck1" required>
+                <label class="form-check-label" for="basicValidationCustomCheck1">Yes</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="basicValidationCheckbox" id="basicValidationCustomCheck2" required>
+                <label class="form-check-label" for="basicValidationCustomCheck2">No</label>
+            </div>
+        </div>*@
+  
+    <div class="col-md-12">
+        <h5>Description</h5>
+        <label class="mb-3 top-label">
+            @Html.TextAreaFor(a => a.Discription, new { @class = "form-control", placeholder = "Description" })
+            <span>Description</span>
+        </label>
+    </div>
+    <div class="row">
+        <div class="col-12 form-group">
+            <label class="form-label">Status</label>
+            @Html.DropDownListFor(a => a.Status, new List<SelectListItem>
+    {
+           new SelectListItem{Text="Active" , Value="1"},
+           new SelectListItem{Text="In-Active" , Value="0"} }, "Select Status", new { @class = "form-control" })
+
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary mb-0" />
+</form>
+<script>
+    $(document).ready(function () {
+       
+        Save();
+    });
+    function SubCatogaryShow() {
+        debugger;
+        var CategoryId = $('#CatogaryId').val();
+        var dropd = $('#SubCategoryId');
+        $.ajax({
+            type: 'Get',
+            url: '/Product/getSubCategory',
+            data: {
+                CatogaryId: CategoryId
+            },
+            success: function (res) {
+                dropd.empty();
+                for (var i = 0; i < res.length; i++) {
+                    dropd.append(`<option value="${res[i].SubCategoryId}">${res[i].SubCategoryName}</option>`);
+                }
+            }
+        })
+    }
+
+
+    function Save() {
+        debugger;
+        $('#Frmdata').submit(function (event) {
+            event.preventDefault();
+           
+                var formdata = new FormData(document.getElementById('Frmdata'));
+                $.ajax
+                    ({
+                        type: 'Post',
+                        url: '/Product/Save',
+                        processData: false,
+                        contentType: false,
+                        data: formdata,
+                        success: function (result) {
+                            if (result == 1) {
+                                toastr.success("Data has been successfully Saved");
+                            }
+                            else {
+                                toastr.error("Must have Added Four Picture");
+                            }
+                        }
+                    })
+            
+           
+        })
+    }
+
+    //function validation() {
+    //    debugger;
+    //    $('#Frmdata input').each(function () {
+    //        debugger;
+    //        var value = $(this).val();
+    //        var id = $(this).attr("id");
+    //        if (value == "") {
+    //            $("#Cat" + id).text('Required');
+    //        }
+    //        else {
+    //            $("#Cat" + id).text('');
+    //        }
+    //    });
+
+    //}
+
+</script>

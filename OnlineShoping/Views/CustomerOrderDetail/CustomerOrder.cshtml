@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "CustomerOrder";
+    Layout = "~/Views/Shared/_ProductLayout.cshtml";
+}
+<div class="page-content-wrapper">
+    <div class="row">
+        <div class="col-12">
+            <div class="card m-b-20">
+                <div class="card-body">
+
+                    <h4 class="mt-0 header-title">Customer Orders</h4>
+                   
+                    <div id="pageOrder">
+
+                    </div>
+
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+</div>
+<script>
+    $(document).ready(function () {
+        CustomerOrderShow();
+    })
+
+    function CustomerOrderShow() {
+        debugger;
+        $.ajax({
+            type: 'Get',
+            url: '/CustomerOrderDetail/CustomerorderShow',
+            success: function (res) {
+                $('#pageOrder').html(res);
+            }
+        })
+    }
+</script>
+

@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "AdminIndexUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .fixed-background {
+       
+        background-image: url('../../assets/img/background/halloween-gaafbf1dc8_1920.jpg');
+    }
+</style>
+<body>
+    <div class="fixed-background"></div>
+    <div id="root">
+
+        <main>
+            <div class="container">
+                <div class="row gx-4 gy-5">
+                    <div class="col-12 col-xl-4 col-xxl-4">
+                        <div id="updateformget">
+
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-12 col-xl-8 col-xxl-8">
+
+                        <div id="FormShow">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        FormShow();
+        AdminUpdateGEt();
+    });
+    function FormShow(){
+        $.ajax
+            ({
+                type: 'Get',
+                url: '/AdminHome/FormUpdate',
+                success: function (res) {
+                    $('#FormShow').html(res)
+
+                }
+            })
+    }
+    function FormPassword() {
+        debugger;
+        $.ajax
+            ({
+                type: 'Get',
+                url: '/AdminHome/FormPassword',
+                success: function (res) {
+                    $('#FormShow').html(res)
+                }
+            })
+    }
+    function FormImage() {
+        debugger;
+        $.ajax
+            ({
+                type: 'Get',
+                url: '/AdminHome/FormImage',
+                success: function (res) {
+                    $('#FormShow').html(res)
+            
+                }
+            })
+    }
+    function AdminUpdateGEt() {
+        $.ajax
+            ({
+                type: 'Get',
+                url: '/AdminHome/FormUpdateGet',
+                success: function (res) {
+                    $('#updateformget').html(res)
+
+                }
+            })
+    }
+</script>
+
+
